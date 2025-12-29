@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+         #
+#    By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2025/12/22 09:03:04 by brouzaud         ###   ########.fr        #
+#    Updated: 2025/12/29 21:23:14 by bjmrzd           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -ggdb 
 INC = -I./include 
 
-SRCS = parsing_utils.c parsing.c reverse_rotate.c rotate.c simple_algo.c split.c swap.c utils.c main.c
+SRCS = parsing_utils.c parsing.c reverse_rotate.c rotate.c simple_algo.c split.c swap.c utils.c main.c push.c utils2.c bench.c printf.c printf_utils.c disorder.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = Push_swap

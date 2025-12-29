@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/22 09:33:18 by brouzaud         ###   ########.fr       */
+/*   Updated: 2025/12/29 21:16:49 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,48 +37,31 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (index);
 }
-
-int	check_bubble_sort(t_list **a_list, int argc, char *argv[])
+void	simple_sort(int argc, char *argv[], t_list **list, t_count *count)
 {
-	t_list	*tmp;
 	t_flag	flag;
-	int		len;
+	t_flag	isbench;
+	int		size;
 
-	flag = arg_error(argc, argv);
-	if (flag == COMPLEX || flag == MEDIUM)
-		exit(2);
-	tmp = (*a_list);
-	len = ft_lstsize(tmp);
-	if (sorted(tmp) == 0)
-		exit(2);
-	return (len);
+	isbench = arg_error(argc, argv);
+	if (isbench == BENCH)
+		flag = second_flag(argc, argv);
+	if (flag == SIMPLE)
+	{
+		size = ft_lstsize((*list));
+		if (size == 3)
+			sort3(list, count);
+	}
 }
 
-void	bubble_sort(t_list **a_list, int argc, char *argv[])
+void	sort3(t_list **a_list, t_count *count)
 {
-	t_list	*tmp;
-	int		sort;
-	int		index2;
-
-	sort = 1;
-	tmp = (*a_list);
-	tmp->index2 = check_bubble_sort(a_list, argc, argv);
-	while (sort)
+	// t_list	*last;
+	// last = ft_lstlast((*a_list));
+	if (sorted((*a_list)) == 0)
+		exit(2);
+	if ((*a_list)->data > (*a_list)->next->data)
 	{
-		sort = 0;
-		tmp->index = 0;
-		while (tmp->index < tmp->index2 - 1)
-		{
-			if (tmp->data > tmp->next->data)
-			{
-				sa(a_list);
-				sort = 1;
-			}
-			ra(a_list);
-			tmp->index++;
-		}
-		index2 = 0;
-		while (index2++ < tmp->index2 - 1)
-			rra(a_list);
+		ra(a_list, count);
 	}
 }

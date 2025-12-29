@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:40 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/22 09:08:00 by brouzaud         ###   ########.fr       */
+/*   Updated: 2025/12/29 21:02:05 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list **list)
+void	sa(t_list **list, t_count *count)
 {
-	int		tmp;
 	t_list	*head;
+	t_list	*tmp;
 
-	if (!(*list)->data || !(*list)->next->data)
+	if (!(*list) || !(*list)->next)
 		return ;
 	head = (*list);
-	tmp = (*list)->data;
-	(*list)->data = (*list)->next->data;
-	(*list)->next->data = tmp;
-	(*list) = head;
+	tmp = (*list)->next;
+	head->next = tmp->next;
+	tmp->next = head;
+	(*list) = tmp;
+	count->sa_count++;
 	return ;
 }

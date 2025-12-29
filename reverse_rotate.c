@@ -3,29 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:53 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/22 09:07:53 by brouzaud         ###   ########.fr       */
+/*   Updated: 2025/12/29 21:01:50 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rra(t_list **list)
+void	rra(t_list **list, t_count *count)
 {
 	t_list	*end;
-	int		tmp;
-	t_list	*lst;
+	t_list	*head;
+	t_list	*tmp;
 
-	lst = (*list);
-	end = ft_lstlast((lst));
-	while (lst && (lst)->next)
-	{
-		tmp = (lst)->data;
-		(lst)->data = end->data;
-		end->data = tmp;
-		lst = lst->next;
-	}
+	if (!(*list) || !(*list)->next)
+		return ;
+	head = (*list);
+	tmp = head;
+	while (tmp->next && tmp->next->next)
+		tmp = tmp->next;
+	end = tmp->next;
+	if (!end)
+		return ;
+	tmp->next = NULL;
+	end->next = head;
+	(*list) = end;
+	count->rra_count++;
 	return ;
 }

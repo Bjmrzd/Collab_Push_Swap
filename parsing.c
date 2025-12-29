@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/22 09:07:45 by brouzaud         ###   ########.fr       */
+/*   Updated: 2025/12/29 20:56:14 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	flag_count(char *argv[], int arg_index)
+{
+	t_flag	flag;
+
+	flag = NO_FLAG;
+	arg_index = 1;
+	if (ft_strncmp(argv[1], "--bench", 7) == 0)
+	{
+		flag = BENCH;
+		arg_index++;
+	}
+	if (flag == BENCH)
+	{
+		if (ft_strncmp(argv[arg_index], "adaptative", 8) == 0)
+			arg_index++;
+		if (ft_strncmp(argv[arg_index], "--simple", 8) == 0)
+			arg_index++;
+		if (ft_strncmp(argv[arg_index], "--medium", 8) == 0)
+			arg_index++;
+		if (ft_strncmp(argv[arg_index], "--complex", 9) == 0)
+			arg_index++;
+		if (ft_strncmp(argv[arg_index], "--bench", 7) == 0)
+			error_arg();
+	}
+	else
+		arg_index++;
+	return (arg_index);
+}
 
 t_flag	arg_error(int argc, char *argv[])
 {
@@ -43,7 +72,7 @@ void	parsing_str(int argc, char *argv[], t_list **a, int num)
 	arg_index = 1;
 	isflag = arg_error(argc, argv);
 	if (isflag)
-		arg_index++;
+		arg_index = flag_count(argv, arg_index);
 	while (arg_index < argc)
 	{
 		index = 0;

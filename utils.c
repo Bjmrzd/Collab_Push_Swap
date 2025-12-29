@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:43 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/22 09:08:02 by brouzaud         ###   ########.fr       */
+/*   Updated: 2025/12/29 21:09:04 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,19 @@ int	ft_isdigit(char *c)
 	int	index;
 
 	index = 0;
+	if (!c[index])
+		return (index);
 	if (c[index] == '-')
 	{
 		index++;
 	}
-	if (c[index] >= 48 && c[index] <= 57)
-		return (1);
-	else
-		return (0);
+	while (c[index])
+	{
+		if (c[index] < '0' || c[index] > '9')
+			return (0);
+		index++;
+	}
+	return (1);
 }
 
 void	error_arg(void)
