@@ -6,7 +6,7 @@
 /*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/29 23:22:36 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/01 13:55:21 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,29 @@ void	simple_sort(int argc, char *argv[], t_list **list, t_count *count)
 
 void	sort3(t_list **a_list, t_count *count)
 {
-	// t_list	*last;
-	// last = ft_lstlast((*a_list));
+	t_list *last;
+	int first;
+	int second;
+
+	first = (*a_list)->data;
+	second = (*a_list)->next->data;
+	last = ft_lstlast((*a_list));
 	if (sorted((*a_list)) == 0)
 		exit(2);
-	if ((*a_list)->data > (*a_list)->next->data)
+	if (first > second && second < last->data && last->data > first)
+		sa(a_list, count);
+	else if (first > second && second > last->data && last->data < first)
 	{
+		sa(a_list, count);
+		rra(a_list, count);
+	}
+	else if (first > second && second < last->data && last->data < first)
+		ra(a_list, count);
+	else if (first < second && second > last->data && last->data > first)
+	{
+		sa(a_list, count);
 		ra(a_list, count);
 	}
+	else
+		rra(a_list, count);
 }
