@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/03 15:33:18 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/03 19:02:53 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,25 @@ void	simple_sort(int argc, char *argv[], t_list **list, t_count *count)
 		if (size == 3)
 			sort3(list, count);
 		else
-			selection_sort(list, count);
+			insertion_sort(list, count);
 	}
 }
 
-int	getMin(t_list **list)
-{
-	int		min;
-	t_list	*tmp;
+// int	getMin(t_list **list)
+// {
+// 	int		min;
+// 	t_list	*tmp;
 
-	tmp = (*list);
-	min = tmp->data;
-	while (tmp)
-	{
-		if (tmp->data < min)
-			min = tmp->data;
-		tmp = tmp->next;
-	}
-	return (min);
-}
+// 	tmp = (*list);
+// 	min = tmp->data;
+// 	while (tmp)
+// 	{
+// 		if (tmp->data < min)
+// 			min = tmp->data;
+// 		tmp = tmp->next;
+// 	}
+// 	return (min);
+// }
 
 void	sort3(t_list **a_list, t_count *count)
 {
@@ -91,18 +91,27 @@ void	sort3(t_list **a_list, t_count *count)
 		rra(a_list, count);
 }
 
-// void	selection_sort(t_list **list, t_count *count)
-// {
-// 	int	len;
-// 	int	min;
-// 	int	index;
-// 	int	sort;
+void	insertion_sort(t_list **a_list, t_count *count)
+{
+	int		len;
+	int		index;
+	t_list	**b_list;
 
-// 	len = lstsize((*list));
-// 	min = getMin(list); // doit peut etre le mettre dans la boucle pour l'update
-// 	index = 0;
-// 	while (index < len)
-// 	{
-		
-// 	}
-// }
+	b_list = malloc(sizeof(t_list *));
+	len = ft_lstsize((*a_list));
+	while (*a_list)
+	{
+		index = 0;
+		while (index < len)
+		{
+			if ((*a_list)->data < (*a_list)->next->data)
+				ra(a_list, count);
+			else
+				sa(a_list, count);
+			index++;
+		}
+		pb(a_list, b_list, count);
+	}
+	while ((*b_list))
+		pa(a_list, b_list, count);
+}
