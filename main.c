@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:06 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/29 21:16:06 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/03 12:35:02 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char *argv[])
 	parsing(argc, argv, list);
 	init_count(count);
 	simple_sort(argc, argv, list, count);
-		// doit le mettre dans fonction qui repera les algos selon flag apres
+	// doit le mettre dans fonction qui repera les algos selon flag apres
 	bench(argc, argv, list, count);
 	tmp = (*list);
 	while (tmp)

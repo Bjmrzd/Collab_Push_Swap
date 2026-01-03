@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/29 20:56:14 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/03 12:29:50 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	duplicate_parsing(t_list **list)
 
 void	parsing(int argc, char *argv[], t_list **a)
 {
-	int	num;
+	int num;
 
 	num = 0;
 	parsing_str(argc, argv, a, num);

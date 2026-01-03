@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2025/12/29 21:21:38 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/03 15:02:05 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int					print_hexa(unsigned long long n, const char c);
 int					ft_putchar_fd(char c, int fd);
 int					ft_putnbr_fd(int n, int fd);
 int					ft_putstr_fd(const char *s, int fd);
+int					getMin(t_list **list);
 
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);

@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-int	getMax(t_list **list) // attrappe la valeur max
+int	getMax(t_list **list) // attrape la valeur max
 {
-	int		max;
-	t_list	*tmp;
+	int max;
+	t_list *tmp;
 
 	tmp = (*list);
 	max = tmp->data;
@@ -31,7 +31,9 @@ void	sort_digits(t_list **list) // doit trier par unites, etc ...
 	}
 }
 
-void	radix_sort(t_list **list) // doit appeler max et sort digit
+void	radix_sort(t_list **list, t_count *count)
+		// doit appeler max et sort digit
+		// doit peut etre changer push b
 {
 	int max;
 

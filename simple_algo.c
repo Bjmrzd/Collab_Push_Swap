@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/01 13:55:21 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/03 15:33:18 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ int	sorted(t_list *list)
 	return (0);
 }
 
-int	ft_lstsize(t_list *lst)
-{
-	int	index;
-
-	index = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		index++;
-	}
-	return (index);
-}
 void	simple_sort(int argc, char *argv[], t_list **list, t_count *count)
 {
 	t_flag	flag;
@@ -53,14 +41,32 @@ void	simple_sort(int argc, char *argv[], t_list **list, t_count *count)
 		size = ft_lstsize((*list));
 		if (size == 3)
 			sort3(list, count);
+		else
+			selection_sort(list, count);
 	}
+}
+
+int	getMin(t_list **list)
+{
+	int		min;
+	t_list	*tmp;
+
+	tmp = (*list);
+	min = tmp->data;
+	while (tmp)
+	{
+		if (tmp->data < min)
+			min = tmp->data;
+		tmp = tmp->next;
+	}
+	return (min);
 }
 
 void	sort3(t_list **a_list, t_count *count)
 {
-	t_list *last;
-	int first;
-	int second;
+	t_list	*last;
+	int		first;
+	int		second;
 
 	first = (*a_list)->data;
 	second = (*a_list)->next->data;
@@ -84,3 +90,19 @@ void	sort3(t_list **a_list, t_count *count)
 	else
 		rra(a_list, count);
 }
+
+// void	selection_sort(t_list **list, t_count *count)
+// {
+// 	int	len;
+// 	int	min;
+// 	int	index;
+// 	int	sort;
+
+// 	len = lstsize((*list));
+// 	min = getMin(list); // doit peut etre le mettre dans la boucle pour l'update
+// 	index = 0;
+// 	while (index < len)
+// 	{
+		
+// 	}
+// }

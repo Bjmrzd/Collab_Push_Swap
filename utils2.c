@@ -53,3 +53,16 @@ void	init_count(t_count *count)
 	count->rrb_count = 0;
 	count->total_count = 0;
 }
+
+int	ft_lstsize(t_list *lst)
+{
+	int index;
+
+	index = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		index++;
+	}
+	return (index);
+}
