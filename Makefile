@@ -6,7 +6,7 @@
 #    By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/03 12:33:59 by brouzaud         ###   ########.fr        #
+#    Updated: 2026/01/07 21:11:42 by brouzaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -ggdb 
 INC = -I./include 
 
-SRCS = parsing_utils.c parsing.c reverse_rotate.c rotate.c simple_algo.c split.c swap.c utils.c main.c push.c utils2.c bench.c printf.c printf_utils.c disorder.c
+SRCS = parsing_utils.c parsing.c reverse_rotate.c rotate.c simple_algo.c split.c swap.c utils.c main.c push.c utils2.c bench.c printf.c printf_utils.c disorder.c sort_tools.c strategy_select.c complex_algo.c
 OBJS = $(SRCS:.c=.o)
 
 NAME = Push_swap

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/06 01:17:34 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/07 21:09:28 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef enum e_flag
 
 t_list				*ft_lstnew(int content);
 t_list				*ft_lstlast(t_list *lst);
+t_list				**sort_logic(t_list **a_list, t_count *count);
 t_flag				arg_error(int argc, char *argv[]);
 t_flag				second_flag(int argc, char *argv[]);
 
@@ -79,6 +80,13 @@ void				strategy(int argc, char *argv[]);
 void				init_count(t_count *count);
 void				sort3(t_list **a_list, t_count *count);
 void				selection_sort(t_list **a_list, t_count *count);
+void				radix_sort(t_list **b_list, t_list **a_list,
+						t_count *count);
+void				init_radix(t_list **a_list, t_count *count);
+void				adaptive(int argc, char *argv[], t_list **list,
+						t_count *count);
+void				strat_select(int argc, char *argv[], t_list **list,
+						t_count *count);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);
@@ -96,6 +104,10 @@ int					ft_putchar_fd(char c, int fd);
 int					ft_putnbr_fd(int n, int fd);
 int					ft_putstr_fd(const char *s, int fd);
 int					getMin(t_list **list);
+int					min_index(t_list **list);
+int					getMax(t_list **list);
+int					max_bits(t_list **list);
+int					getBits(int digit, int pos);
 
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);

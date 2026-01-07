@@ -31,7 +31,7 @@ int	print_unsigned(unsigned int n)
 		count += print_unsigned((num / 10));
 	}
 	number = ((num % 10) + '0');
-	count += write(1, &number, 1);
+	count += write(2, &number, 1);
 	return (count);
 }
 
@@ -43,8 +43,8 @@ int	print_ptr(void *ptr)
 	count = 0;
 	temp = (unsigned long long)ptr;
 	if (!ptr)
-		return ((write(1, "(nil)", 5)));
-	count += write(1, &"0x", 2);
+		return ((write(2, "(nil)", 5)));
+	count += write(2, &"0x", 2);
 	count += print_hexa(temp, 'x');
 	return (count);
 }
@@ -55,15 +55,15 @@ static int	typecheck(const char *str, va_list arguments)
 
 	count = 0;
 	if (*str == 'c')
-		return (count += ft_putchar_fd(va_arg(arguments, int), 1));
+		return (count += ft_putchar_fd(va_arg(arguments, int), 2));
 	else if (*str == 's')
-		return (count += ft_putstr_fd(va_arg(arguments, char *), 1));
+		return (count += ft_putstr_fd(va_arg(arguments, char *), 2));
 	else if (*str == 'p')
 		return (count += print_ptr(va_arg(arguments, void *)));
 	else if (*str == 'd')
-		return (count += ft_putnbr_fd(va_arg(arguments, int), 1));
+		return (count += ft_putnbr_fd(va_arg(arguments, int), 2));
 	else if (*str == 'i')
-		return (count += ft_putnbr_fd(va_arg(arguments, int), 1));
+		return (count += ft_putnbr_fd(va_arg(arguments, int), 2));
 	else if (*str == 'u')
 		return (count += print_unsigned(va_arg(arguments, unsigned int)));
 	else if (*str == 'x')
@@ -97,7 +97,7 @@ int	ft_printf(const char *str, ...)
 				index += ft_putchar_fd('%', 1);
 		}
 		else
-			index += write(1, str, 1);
+			index += write(2, str, 1);
 		str++;
 	}
 	va_end(args);

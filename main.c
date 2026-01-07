@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:06 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/03 12:35:02 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/07 21:09:58 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char *argv[])
 	*list = NULL;
 	parsing(argc, argv, list);
 	init_count(count);
-	simple_sort(argc, argv, list, count);
-	// doit le mettre dans fonction qui repera les algos selon flag apres
+	strat_select(argc, argv, list, count);
 	bench(argc, argv, list, count);
 	tmp = (*list);
 	while (tmp)
