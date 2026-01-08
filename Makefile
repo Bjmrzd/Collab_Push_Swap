@@ -6,26 +6,35 @@
 #    By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/07 21:11:42 by brouzaud         ###   ########.fr        #
+#    Updated: 2026/01/08 19:34:04 by brouzaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror -ggdb 
 INC = -I./include 
 
-SRCS = parsing_utils.c parsing.c reverse_rotate.c rotate.c simple_algo.c split.c swap.c utils.c main.c push.c utils2.c bench.c printf.c printf_utils.c disorder.c sort_tools.c strategy_select.c complex_algo.c
+SRCS =	utils/parsing_utils.c utils/printf.c utils/printf_utils.c utils/split.c utils/utils.c utils/utils2.c
+
+SRCS +=	tools/parsing.c  tools/bench.c tools/disorder.c tools/sort_tools.c tools/strategy_select.c 
+
+SRCS += ops/push.c ops/rotate.c ops/reverse_rotate.c ops/swap.c
+
+SRCS += algo/complex_algo.c algo/simple_algo.c algo/medium_algo.c
+
+SRCS += main.c
+
 OBJS = $(SRCS:.c=.o)
+
+HEADERS = push_swap.h
 
 NAME = Push_swap
 
-HEADERS = push_swap.h
 all: $(NAME)
 	@echo Compiled !
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(INC) $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(INC) $(OBJS) $(HEADERS) -o $(NAME)
 	@echo "$(NAME) is ready !"
 
 %.o: %.c $(HEADERS)
@@ -54,4 +63,4 @@ val:
 	@rm -f $(NAME)
 
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test val gdb

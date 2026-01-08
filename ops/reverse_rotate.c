@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/22 09:03:06 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:57:36 by brouzaud         ###   ########.fr       */
+/*   Created: 2025/12/22 09:02:53 by brouzaud          #+#    #+#             */
+/*   Updated: 2026/01/08 19:32:49 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	main(int argc, char *argv[])
+void	rra(t_list **list, t_count *count)
 {
+	t_list	*end;
+	t_list	*head;
 	t_list	*tmp;
-	t_list	**list;
-	t_count	*count;
+	t_list	*node;
 
-	list = malloc(sizeof(t_list *));
-	count = malloc(sizeof(t_count));
-	*list = NULL;
-	parsing(argc, argv, list);
-	init_count(count);
-	strat_select(argc, argv, list, count);
-	bench(argc, argv, list, count);
-	tmp = (*list);
-	while (tmp)
+	if (!*list || !(*list)->next)
+		return ;
+	head = *list;
+	tmp = head;
+	while (tmp->next)
 	{
-		printf("arg 1 = %d\n", tmp->data);
+		node = tmp;
 		tmp = tmp->next;
 	}
-	return (0);
+	end = tmp;
+	if (!end)
+		return ;
+	node->next = NULL;
+	(*list) = end;
+	end->next = head;
+	count->rra_count++;
+	return ;
 }
