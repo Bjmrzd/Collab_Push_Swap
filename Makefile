@@ -6,7 +6,7 @@
 #    By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/08 19:34:04 by brouzaud         ###   ########.fr        #
+#    Updated: 2026/01/09 20:38:36 by brouzaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,12 +55,19 @@ test: $(NAME)
 	@echo -- END OF TESTING--
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
+	
 gdb: $(NAME)
-	gdb ./$(NAME)
+	@(printf "Enter args :"; read arg; gdb --args ./$(NAME) $$arg);
+	
 val:
-	@valgrind ./$(NAME)
+	@(printf "Enter args :"; read arg; valgrind ./$(NAME) $$arg);
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
-
-
-.PHONY: all clean fclean re test val gdb
+	
+run: $(NAME)
+	@(printf "Enter args :"; read arg; ./$(NAME) $$arg);
+	
+shuf: $(NAME)
+	@(printf "Enter size :"; read arg; shuf -i 0-9999 -n $$arg > args.txt; ./$(NAME) $(cat args.txt))
+	
+.PHONY: all clean fclean re test val gdb run

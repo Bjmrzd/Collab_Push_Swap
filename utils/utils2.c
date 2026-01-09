@@ -9,7 +9,7 @@ t_flag	second_flag(int argc, char *argv[])
 	if (bench_flag == BENCH)
 	{
 		flag = NO_FLAG;
-		if (ft_strncmp(argv[2], "--adaptive", 8) == 0)
+		if (ft_strncmp(argv[2], "--adaptive", 10) == 0)
 			flag = ADAPTIVE;
 		if (ft_strncmp(argv[2], "--simple", 8) == 0)
 			flag = SIMPLE;
@@ -67,15 +67,17 @@ int	ft_lstsize(t_list *lst)
 	return (index);
 }
 
-int	sorted(t_list *list)
+int	sorted(t_list **list)
 {
-	while (list && list->next)
+	t_list *tmp;
+	tmp = (*list);
+	while (tmp && tmp->next)
 	{
-		if (list->data > list->next->data)
+		if (tmp->data > tmp->next->data)
 		{
 			return (1);
 		}
-		list = list->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }

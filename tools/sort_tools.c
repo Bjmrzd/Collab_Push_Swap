@@ -2,8 +2,8 @@
 
 int	getMin(t_list **list)
 {
-	int min;
-	t_list *tmp;
+	int		min;
+	t_list	*tmp;
 
 	tmp = (*list);
 	min = tmp->data;
@@ -16,3 +16,21 @@ int	getMin(t_list **list)
 	return (min);
 }
 
+int	min_index(t_list **list)
+{
+	int		min;
+	t_list	*tmp;
+	int		index;
+
+	index = 0;
+	tmp = (*list);
+	min = getMin(list);
+	while (tmp)
+	{
+		if (tmp->data == min)
+			return (index);
+		index++;
+		tmp = tmp->next;
+	}
+	return (index);
+}

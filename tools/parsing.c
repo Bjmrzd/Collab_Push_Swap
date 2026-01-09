@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:44:00 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:47:48 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	flag_count(char *argv[], int arg_index)
 	}
 	if (flag == BENCH)
 	{
-		if (ft_strncmp(argv[arg_index], "adaptive", 8) == 0)
+		if (ft_strncmp(argv[arg_index], "--adaptive", 10) == 0)
 			arg_index++;
 		if (ft_strncmp(argv[arg_index], "--simple", 8) == 0)
 			arg_index++;
@@ -45,10 +45,10 @@ t_flag	arg_error(int argc, char *argv[])
 {
 	t_flag	isflag;
 
-	if (argc <= 1)
+	if (argc <= 2)
 		error_arg();
 	isflag = NO_FLAG;
-	if (ft_strncmp(argv[1], "--adaptive", 8) == 0)
+	if (ft_strncmp(argv[1], "--adaptive", 10) == 0)
 		isflag = ADAPTIVE;
 	if (ft_strncmp(argv[1], "--simple", 8) == 0)
 		isflag = SIMPLE;

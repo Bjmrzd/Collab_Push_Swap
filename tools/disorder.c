@@ -10,7 +10,7 @@ float	disorder(t_list **list) // doit marcher normalement maintenant
 	tmp = (*list);
 	mistakes = 0;
 	total_args = ft_lstsize(tmp);
-	if (sorted(tmp) == 0)
+	if (sorted(list) == 0)
 		mistakes = 0;
 	while (tmp && tmp->next)
 	{
@@ -22,4 +22,9 @@ float	disorder(t_list **list) // doit marcher normalement maintenant
 	}
 	dis = (float)mistakes / (float)total_args;
 	return (dis);
+}
+
+void	init_disorder(t_list **list, t_dis *init)
+{
+	init->dis = disorder(list);
 }

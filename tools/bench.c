@@ -1,9 +1,9 @@
 #include "../push_swap.h"
 
-void	strategy(int argc, char *argv[]) // pour le bench
+void	strategy(int argc, char *argv[])
 {
-	t_flag flag;
-	t_flag isbench;
+	t_flag	flag;
+	t_flag	isbench;
 
 	isbench = arg_error(argc, argv);
 	if (isbench == BENCH)
@@ -21,7 +21,7 @@ void	strategy(int argc, char *argv[]) // pour le bench
 	return ;
 }
 
-int	count_ops(t_count *count) // count correctement normalement
+int	count_ops(t_count *count)
 {
 	count->total_count = (count->ra_count + count->rb_count + count->rr_count
 			+ count->sa_count + count->sb_count + count->ss_count
@@ -30,16 +30,15 @@ int	count_ops(t_count *count) // count correctement normalement
 	return (count->total_count);
 }
 
-void	bench(int argc, char *argv[], t_list **list, t_count *count)
+void	bench(int argc, char *argv[], t_count *count, t_dis *init_dis)
 {
 	t_flag flag;
-	float dis;
 
 	flag = arg_error(argc, argv);
-	dis = disorder(list);
+
 	if (flag == BENCH)
 	{
-		printf("[bench] disorder: %f%%\n", dis * 100);
+		printf("[bench] disorder: %f%%\n", init_dis->dis * 100);
 		// marche avec printf mais doit modifier ft_printf pour faire float
 		strategy(argc, argv);
 		ft_printf("[bench] total_ops: %d\n", count_ops(count));
