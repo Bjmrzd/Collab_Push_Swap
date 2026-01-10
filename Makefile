@@ -6,7 +6,7 @@
 #    By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/10 15:37:58 by bjmrzd           ###   ########.fr        #
+#    Updated: 2026/01/10 15:44:44 by bjmrzd           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ run: $(NAME)
 	@(printf "Enter args :"; read arg; ./$(NAME) $$arg);
 	
 shuf: $(NAME)
-	@(printf "Enter size :"; read arg; printf "Enter args :"; read args; shuf -i 0-9999 -n $$arg > args.txt; ./$(NAME) $$args $$(cat args.txt))
+	@(printf "Enter size :"; read arg; printf "Enter flags :"; read args; shuf -i 0-9999 -n $$arg > args.txt; ./$(NAME) $$args $$(cat args.txt))
+	@rm -f args.txt
 	
-.PHONY: all clean fclean re test val gdb run
+.PHONY: all clean fclean re test val gdb run shuf
