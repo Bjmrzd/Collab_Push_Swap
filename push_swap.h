@@ -6,7 +6,7 @@
 /*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 04:16:16 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/11 05:00:35 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,11 @@ void				selection_sort(char *argv[], t_list **a_list,
 						t_count *count);
 void				radix_sort(char *argv[], t_list **a_list, t_count *count);
 void				init_radix(char *argv[], t_list **a_list, t_count *count);
-void				adaptive(char *argv[],t_list **list, t_count *count);
+void				adaptive(char *argv[], t_list **list, t_count *count);
 void				strat_select(char *argv[], t_list **list, t_count *count);
 void				init_disorder(t_list **list, t_dis *init);
-void				complex_sort(char *argv[],t_list **a_list, t_count *count);
+void				complex_sort(char *argv[], t_list **a_list, t_count *count);
+void				free_list(t_list **list);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);

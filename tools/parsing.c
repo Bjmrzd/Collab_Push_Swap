@@ -6,7 +6,7 @@
 /*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 04:18:50 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/11 05:41:28 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ t_flag	arg_error(char *argv[])
 }
 
 void	parsing_str(int argc, char *argv[], t_list **a, int num)
+// il faut free split et trouver le moyen de pas avoir de zero et de segfault
 {
-	int		arg_index;
-	int		index;
-	char	**str;
-	t_list	*new;
-	t_flag	isflag;
+	int arg_index;
+	size_t index;
+	char **str;
+	t_list *new;
 
 	arg_index = 1;
-	isflag = arg_error(argv);
-	if (isflag)
+
+	if (arg_error(argv))
 		arg_index = flag_count(argv, arg_index);
 	while (arg_index < argc)
 	{
@@ -83,6 +83,7 @@ void	parsing_str(int argc, char *argv[], t_list **a, int num)
 			ft_lstadd_back(a, new);
 			index++;
 		}
+		// free_split(str, index);
 		arg_index++;
 	}
 }

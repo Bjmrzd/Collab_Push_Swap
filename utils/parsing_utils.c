@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:01 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:31:32 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:44:08 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	const unsigned char	*t1;
 	const unsigned char	*t2;
 
+	if (!s1 || !s2)
+		return (0);
 	t1 = (const unsigned char *)s1;
 	t2 = (const unsigned char *)s2;
 	while (n--)

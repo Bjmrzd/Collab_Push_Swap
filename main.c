@@ -6,7 +6,7 @@
 /*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:06 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 03:52:22 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/11 04:46:26 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int	main(int argc, char *argv[])
 		printf("arg 1 = %d\n", tmp->data);
 		tmp = tmp->next;
 	}
-	free(list);
 	free(count);
 	free(init_dis);
+	free_list(list);
+	free(list);
 	return (0);
 }

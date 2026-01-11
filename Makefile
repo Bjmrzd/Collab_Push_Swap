@@ -6,7 +6,7 @@
 #    By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/10 15:44:44 by bjmrzd           ###   ########.fr        #
+#    Updated: 2026/01/11 04:31:42 by bjmrzd           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -ggdb 
 INC = -I./include 
 
-SRCS =	utils/parsing_utils.c utils/printf.c utils/printf_utils.c utils/split.c utils/utils.c utils/utils2.c
+SRCS =	utils/parsing_utils.c utils/printf.c utils/printf_utils.c utils/split.c utils/utils.c utils/utils2.c utils/free_utils.c
 
 SRCS +=	tools/parsing.c  tools/bench.c tools/disorder.c tools/sort_tools.c tools/strategy_select.c 
 
@@ -59,8 +59,8 @@ test: $(NAME)
 gdb: $(NAME)
 	@(printf "Enter args :"; read arg; gdb --args ./$(NAME) $$arg);
 	
-val:
-	@(printf "Enter args :"; read arg; valgrind ./$(NAME) $$arg);
+val: $(NAME)
+	@(printf "Enter args :"; read arg; valgrind --leak-check=full ./$(NAME) $$arg);
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
 	

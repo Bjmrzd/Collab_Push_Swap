@@ -6,7 +6,7 @@
 /*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 04:15:18 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/11 05:13:59 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ void	selection_sort(char *argv[], t_list **a_list, t_count *count)
 	b_list = sort_logic(argv, a_list, count);
 	while (*b_list)
 		pa(argv, a_list, b_list, count);
+		
 }

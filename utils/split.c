@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:37 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:31:55 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 05:33:02 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char	*sub;
 	size_t	length;
 
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	length = ft_strlen(s);
-	if (start > length)
-		return (ft_calloc(1, 1));
+	if (start >= length)
+		return (NULL);
 	if (len > ft_strlen(s + start))
 	{
 		len = ft_strlen(s + start);
@@ -59,8 +59,11 @@ size_t	len_split(char const *s, char c)
 
 char	**free_split(char **split_s, size_t count)
 {
-	while (count--)
-		free(split_s[count]);
+	size_t	index;
+
+	index = 0;
+	while (index < count)
+		free(split_s[index++]);
 	free(split_s);
 	return (NULL);
 }
@@ -97,7 +100,7 @@ char	**ft_split(char const *s, char c)
 	char	**split_s;
 	size_t	s_index;
 
-	if (!s)
+	if (!s || !*s)
 		return (NULL);
 	s_index = 0;
 	s_index = len_split(s, c);

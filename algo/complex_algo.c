@@ -45,7 +45,8 @@ void	push_back(char *argv[], t_list **b_list, t_list **a_list,
 		pa(argv, a_list, b_list, count);
 }
 
-void	radix_sort(char *argv[], t_list **a_list, t_count *count) // dont work on negative
+void	radix_sort(char *argv[], t_list **a_list, t_count *count)
+// dont work on negative
 {
 	int m_bits;
 	int size;
