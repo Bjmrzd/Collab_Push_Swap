@@ -1,15 +1,15 @@
 #include "../push_swap.h"
 
-void	strategy(int argc, char *argv[])
+void	strategy(char *argv[])
 {
 	t_flag	flag;
 	t_flag	isbench;
 
-	isbench = arg_error(argc, argv);
+	isbench = arg_error(argv);
 	if (isbench == BENCH)
-		flag = second_flag(argc, argv);
+		flag = second_flag(argv);
 	else
-		flag = arg_error(argc, argv);
+		flag = arg_error(argv);
 	if (flag == ADAPTIVE)
 		ft_printf("[bench] strategy:  Adaptive / O(n√n)\n");
 	if (flag == SIMPLE)
@@ -30,17 +30,17 @@ int	count_ops(t_count *count)
 	return (count->total_count);
 }
 
-void	bench(int argc, char *argv[], t_count *count, t_dis *init_dis)
+void	bench(char *argv[], t_count *count, t_dis *init_dis)
 {
 	t_flag flag;
 
-	flag = arg_error(argc, argv);
+	flag = arg_error(argv);
 
 	if (flag == BENCH)
 	{
 		printf("[bench] disorder: %f%%\n", init_dis->dis * 100);
 		// marche avec printf mais doit modifier ft_printf pour faire float
-		strategy(argc, argv);
+		strategy(argv);
 		ft_printf("[bench] total_ops: %d\n", count_ops(count));
 		ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n",
 			count->sa_count, count->sb_count, count->ss_count, count->pa_count,

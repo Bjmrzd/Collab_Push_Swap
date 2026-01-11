@@ -20,8 +20,11 @@ void	chunk_sort(t_list **a_list) // marche pas doit faire fonctionner
 	index = 0;
 	while (tmp)
 	{
-		if (index2 % 5 == 0)
+		if (index2 == 5)
+		{
 			index++;
+			index2 = 0;
+		}
 		tab[index][index2++] = tmp->data;
 		tmp = tmp->next;
 	}

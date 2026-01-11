@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/09 18:39:07 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:15:18 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	simple_sort(t_list **list, t_count *count)
+void	simple_sort(char *argv[], t_list **list, t_count *count)
 {
 	int	size;
 
 	size = ft_lstsize((*list));
 	if (size == 3)
-		sort3(list, count);
+		sort3(argv, list, count);
 	else
-		selection_sort(list, count);
+		selection_sort(argv, list, count);
 }
 
-void	sort3(t_list **a_list, t_count *count)
+void	sort3(char *argv[], t_list **a_list, t_count *count)
 {
 	t_list	*last;
 	int		first;
@@ -35,24 +35,24 @@ void	sort3(t_list **a_list, t_count *count)
 	if (sorted((a_list)) == 0)
 		exit(2);
 	if (first > second && second < last->data && last->data > first)
-		sa(a_list, count);
+		sa(argv, a_list, count);
 	else if (first > second && second > last->data && last->data < first)
 	{
-		sa(a_list, count);
-		rra(a_list, count);
+		sa(argv, a_list, count);
+		rra(argv, a_list, count);
 	}
 	else if (first > second && second < last->data && last->data < first)
-		ra(a_list, count);
+		ra(argv, a_list, count);
 	else if (first < second && second > last->data && last->data > first)
 	{
-		sa(a_list, count);
-		ra(a_list, count);
+		sa(argv, a_list, count);
+		ra(argv, a_list, count);
 	}
 	else
-		rra(a_list, count);
+		rra(argv, a_list, count);
 }
 
-t_list	**sort_logic(t_list **a_list, t_count *count)
+t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
 {
 	int		index;
 	int		len;
@@ -67,27 +67,27 @@ t_list	**sort_logic(t_list **a_list, t_count *count)
 		if (index <= len / 2)
 		{
 			while (index-- > 0)
-				ra(a_list, count);
+				ra(argv, a_list, count);
 		}
 		else
 		{
 			val = len - index;
 			while (val-- > 0)
-				rra(a_list, count);
+				rra(argv, a_list, count);
 		}
-		pb(a_list, b_list, count);
+		pb(argv, a_list, b_list, count);
 		len--;
 	}
 	return (b_list);
 }
 
-void	selection_sort(t_list **a_list, t_count *count)
+void	selection_sort(char *argv[], t_list **a_list, t_count *count)
 {
 	t_list	**b_list;
 
 	if (sorted(a_list) == 0)
 		exit(2);
-	b_list = sort_logic(a_list, count);
+	b_list = sort_logic(argv, a_list, count);
 	while (*b_list)
-		pa(a_list, b_list, count);
+		pa(argv, a_list, b_list, count);
 }

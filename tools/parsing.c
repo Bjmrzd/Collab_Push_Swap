@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/09 15:47:48 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:18:50 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	flag_count(char *argv[], int arg_index)
 	t_flag	flag;
 
 	flag = NO_FLAG;
-	arg_index = 1;
 	if (ft_strncmp(argv[1], "--bench", 7) == 0)
 	{
 		flag = BENCH;
@@ -41,12 +40,10 @@ int	flag_count(char *argv[], int arg_index)
 	return (arg_index);
 }
 
-t_flag	arg_error(int argc, char *argv[])
+t_flag	arg_error(char *argv[])
 {
 	t_flag	isflag;
 
-	if (argc <= 2)
-		error_arg();
 	isflag = NO_FLAG;
 	if (ft_strncmp(argv[1], "--adaptive", 10) == 0)
 		isflag = ADAPTIVE;
@@ -70,7 +67,7 @@ void	parsing_str(int argc, char *argv[], t_list **a, int num)
 	t_flag	isflag;
 
 	arg_index = 1;
-	isflag = arg_error(argc, argv);
+	isflag = arg_error(argv);
 	if (isflag)
 		arg_index = flag_count(argv, arg_index);
 	while (arg_index < argc)
@@ -117,6 +114,8 @@ void	parsing(int argc, char *argv[], t_list **a)
 	int num;
 
 	num = 0;
+	if (argc <= 2)
+		error_arg();
 	parsing_str(argc, argv, a, num);
 	if (duplicate_parsing(a) == 0)
 		error_arg();

@@ -1,16 +1,13 @@
 #include "../push_swap.h"
 
-void	init_radix(t_list **a_list, t_count *count)
+void	init_radix(char *argv[], t_list **a_list, t_count *count)
 {
-	t_list	**b_list;
-
 	if (sorted(a_list) == 0)
 		exit(2);
-	b_list = malloc(sizeof(t_list *));
-	radix_sort(b_list, a_list, count);
+	radix_sort(argv, a_list, count);
 }
 
-void	complex_sort(t_list **a_list, t_count *count)
+void	complex_sort(char *argv[], t_list **a_list, t_count *count)
 {
 	int	size;
 
@@ -18,42 +15,42 @@ void	complex_sort(t_list **a_list, t_count *count)
 		exit(2);
 	size = ft_lstsize(*a_list);
 	if (size == 3)
-		sort3(a_list, count);
+		sort3(argv, a_list, count);
 	// else if (size == 5)
 	// 	sort5();
 	else
-		init_radix(a_list, count);
+		init_radix(argv, a_list, count);
 }
 
-void	adaptive(t_list **list, t_count *count)
+void	adaptive(char *argv[], t_list **list, t_count *count)
 {
 	float	dis;
 
 	dis = disorder(list);
 	if (dis < 0.2)
-		simple_sort(list, count);
+		simple_sort(argv, list, count);
 	// if (dis >= 0.2 && dis < 0.5)
 	// 	chunk_sort();
 	if (dis >= 0.5)
-		complex_sort(list, count);
+		complex_sort(argv, list, count);
 }
 
-void	strat_select(int argc, char *argv[], t_list **list, t_count *count)
+void	strat_select(char *argv[], t_list **list, t_count *count)
 {
 	t_flag flag;
 	t_flag isbench;
 
-	isbench = arg_error(argc, argv);
+	isbench = arg_error(argv);
 	if (isbench == BENCH)
-		flag = second_flag(argc, argv);
+		flag = second_flag(argv);
 	else
-		flag = arg_error(argc, argv);
+		flag = arg_error(argv);
 	if (flag == ADAPTIVE || flag == NO_FLAG)
-		adaptive(list, count);
+		adaptive(argv, list, count);
 	if (flag == SIMPLE)
-		simple_sort(list, count);
+		simple_sort(argv, list, count);
 	// else if (flag == MEDIUM)
 	// 	chunk_sort();
 	else if (flag == COMPLEX)
-		init_radix(list, count);
+		init_radix(argv, list, count);
 }

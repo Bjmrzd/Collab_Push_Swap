@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:53 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:32:49 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:19:56 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	rra(t_list **list, t_count *count)
+void	rra(char *argv[], t_list **list, t_count *count)
 {
 	t_list	*end;
 	t_list	*head;
@@ -35,5 +35,36 @@ void	rra(t_list **list, t_count *count)
 	(*list) = end;
 	end->next = head;
 	count->rra_count++;
-	return ;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "rra\n", 4);
+}
+void	rrb(char *argv[], t_list **list, t_count *count)
+{
+	t_list	*end;
+	t_list	*head;
+	t_list	*tmp;
+	t_list	*node;
+
+	if (!*list || !(*list)->next)
+		return ;
+	head = *list;
+	tmp = head;
+	while (tmp->next)
+	{
+		node = tmp;
+		tmp = tmp->next;
+	}
+	end = tmp;
+	if (!end)
+		return ;
+	node->next = NULL;
+	(*list) = end;
+	end->next = head;
+	count->rra_count++;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "rrb\n", 4);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:49 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/08 19:32:46 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:19:39 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ra(t_list **list, t_count *count)
+void	ra(char *argv[], t_list **list, t_count *count)
 {
 	t_list	*head;
 	t_list	*tmp;
@@ -28,5 +28,32 @@ void	ra(t_list **list, t_count *count)
 	(*list) = tmp;
 	head->next = NULL;
 	count->ra_count++;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "ra\n", 3);
+	return ;
+}
+
+void	rb(char *argv[], t_list **list, t_count *count)
+{
+	t_list	*head;
+	t_list	*tmp;
+	t_list	*end;
+
+	if (!(*list) || !(*list)->next)
+		return ;
+	head = (*list);
+	tmp = (*list)->next;
+	(*list) = (head)->next;
+	end = ft_lstlast(*list);
+	end->next = head;
+	(*list) = tmp;
+	head->next = NULL;
+	count->ra_count++;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "rb\n", 3);
 	return ;
 }

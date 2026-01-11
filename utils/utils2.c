@@ -1,11 +1,11 @@
 #include "../push_swap.h"
 
-t_flag	second_flag(int argc, char *argv[])
+t_flag	second_flag(char *argv[])
 {
 	t_flag	flag;
 	t_flag	bench_flag;
 
-	bench_flag = arg_error(argc, argv);
+	bench_flag = arg_error(argv);
 	if (bench_flag == BENCH)
 	{
 		flag = NO_FLAG;

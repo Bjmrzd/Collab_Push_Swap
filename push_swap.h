@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/09 19:04:39 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/11 04:16:16 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,38 +61,39 @@ typedef struct s_dis
 
 t_list				*ft_lstnew(int content);
 t_list				*ft_lstlast(t_list *lst);
-t_list				**sort_logic(t_list **a_list, t_count *count);
-t_flag				arg_error(int argc, char *argv[]);
-t_flag				second_flag(int argc, char *argv[]);
+t_list				**sort_logic(char *argv[], t_list **a_list, t_count *count);
+t_flag				arg_error(char *argv[]);
+t_flag				second_flag(char *argv[]);
 
 float				disorder(t_list **list);
 
 void				chunk_sort(t_list **a_list);
-void				ra(t_list **list, t_count *count);
-void				sa(t_list **list, t_count *count);
-void				rra(t_list **list, t_count *count);
+void				ra(char *argv[], t_list **list, t_count *count);
+void				rb(char *argv[], t_list **list, t_count *count);
+void				sa(char *argv[], t_list **list, t_count *count);
+void				sb(char *argv[], t_list **list, t_count *count);
+void				rra(char *argv[], t_list **list, t_count *count);
+void				rrb(char *argv[], t_list **list, t_count *count);
 void				ft_lstadd_back(t_list **lst, t_list *node);
 void				parsing(int argc, char *argv[], t_list **a);
 void				parsing_str(int argc, char *argv[], t_list **a, int num);
 void				*ft_calloc(size_t nmemb, size_t size);
 void				error_arg(void);
-void				simple_sort(t_list **list, t_count *count);
-void				pb(t_list **a, t_list **b, t_count *count);
-void				pa(t_list **a, t_list **b, t_count *count);
-void				bench(int argc, char *argv[], t_count *count,
-						t_dis *init_dis);
-void				strategy(int argc, char *argv[]);
+void				simple_sort(char *argv[], t_list **list, t_count *count);
+void				pb(char *argv[], t_list **a, t_list **b, t_count *count);
+void				pa(char *argv[], t_list **a, t_list **b, t_count *count);
+void				bench(char *argv[], t_count *count, t_dis *init_dis);
+void				strategy(char *argv[]);
 void				init_count(t_count *count);
-void				sort3(t_list **a_list, t_count *count);
-void				selection_sort(t_list **a_list, t_count *count);
-void				radix_sort(t_list **b_list, t_list **a_list,
+void				sort3(char *argv[], t_list **a_list, t_count *count);
+void				selection_sort(char *argv[], t_list **a_list,
 						t_count *count);
-void				init_radix(t_list **a_list, t_count *count);
-void				adaptive(t_list **list, t_count *count);
-void				strat_select(int argc, char *argv[], t_list **list,
-						t_count *count);
+void				radix_sort(char *argv[], t_list **a_list, t_count *count);
+void				init_radix(char *argv[], t_list **a_list, t_count *count);
+void				adaptive(char *argv[],t_list **list, t_count *count);
+void				strat_select(char *argv[], t_list **list, t_count *count);
 void				init_disorder(t_list **list, t_dis *init);
-void				complex_sort(t_list **a_list, t_count *count);
+void				complex_sort(char *argv[],t_list **a_list, t_count *count);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);

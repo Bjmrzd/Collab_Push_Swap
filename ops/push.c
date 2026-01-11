@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-void	pb(t_list **a, t_list **b, t_count *count)
+void	pb(char *argv[], t_list **a, t_list **b, t_count *count)
 {
 	t_list	*tmp;
 
@@ -11,9 +11,13 @@ void	pb(t_list **a, t_list **b, t_count *count)
 	tmp->next = *b;
 	(*b) = tmp;
 	count->pb_count++;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "pb\n", 3);
 }
 
-void	pa(t_list **a, t_list **b, t_count *count)
+void	pa(char *argv[], t_list **a, t_list **b, t_count *count)
 {
 	t_list *tmp;
 
@@ -24,4 +28,8 @@ void	pa(t_list **a, t_list **b, t_count *count)
 	tmp->next = *a;
 	(*a) = tmp;
 	count->pa_count++;
+	if (arg_error(argv) == BENCH)
+		return ;
+	else
+		write(1, "pa\n", 3);
 }
