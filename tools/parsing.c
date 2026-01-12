@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 05:41:28 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/12 21:16:07 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,16 @@ void	parsing_str(int argc, char *argv[], t_list **a, int num)
 	{
 		index = 0;
 		str = ft_split(argv[arg_index], ' ');
-		while (str[index])
+		while (str && str[index])
 		{
-			if (ft_isdigit(str[index]) == 0)
+			if (!ft_isdigit(str[index]))
 				error_arg();
 			num = ft_atoi(str[index]);
 			new = ft_lstnew(num);
 			ft_lstadd_back(a, new);
 			index++;
 		}
-		// free_split(str, index);
+		free_split(str, index);
 		arg_index++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:43 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/09 15:41:54 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:26:17 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_isdigit(char *c)
 	{
 		index++;
 	}
+	// if (c[index] < '0' || c[index] > '9')
+	// 	return (0);
 	while (c[index])
 	{
 		if (c[index] < '0' || c[index] > '9')

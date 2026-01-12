@@ -38,6 +38,23 @@ int	max_bits(t_list **list)
 // 	return ((digit / power) % 2);
 // }
 
+int	check_negative(t_list **a_list, int count_bits)
+{
+	int	val;
+	int	min_val;
+	int	res;
+	int	move;
+
+	min_val = getMin(a_list);
+	val = (*a_list)->data;
+	if (val < 0)
+		res = val - min_val;
+	else
+		res = val;
+	move = res >> count_bits & 1;
+	return (move);
+}
+
 void	push_back(char *argv[], t_list **b_list, t_list **a_list,
 		t_count *count)
 {
@@ -46,7 +63,8 @@ void	push_back(char *argv[], t_list **b_list, t_list **a_list,
 }
 
 void	radix_sort(char *argv[], t_list **a_list, t_count *count)
-// dont work on negative
+// sort negative but problem if there is a 1
+// leak memory of size 8
 {
 	int m_bits;
 	int size;
@@ -55,6 +73,7 @@ void	radix_sort(char *argv[], t_list **a_list, t_count *count)
 	t_list **b_list;
 
 	b_list = malloc(sizeof(t_list *));
+	*b_list = NULL;
 	m_bits = max_bits(a_list);
 	count_bits = 0;
 	while (count_bits < m_bits)
@@ -63,7 +82,7 @@ void	radix_sort(char *argv[], t_list **a_list, t_count *count)
 		size = ft_lstsize((*a_list));
 		while (index < size)
 		{
-			if (((*a_list)->data >> count_bits & 1) == 0)
+			if ((check_negative(a_list, count_bits)) == 0)
 				pb(argv, a_list, b_list, count);
 			else
 				ra(argv, a_list, count);

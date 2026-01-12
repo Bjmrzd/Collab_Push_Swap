@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:06 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/11 04:46:26 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/12 21:30:20 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char *argv[])
 	init_disorder(list, init_dis);
 	strat_select(argv, list, count);
 	bench(argv, count, init_dis);
+	// chunk_sort(list);
 	tmp = (*list);
 	while (tmp)
 	{
