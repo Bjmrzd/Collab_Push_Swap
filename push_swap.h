@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/12 13:16:23 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:09:56 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 typedef struct s_list
 {
 	struct s_list	*next;
-	struct s_list	*prev;
 	int				data;
 	int				index;
-	int				index2;
 }					t_list;
 
 typedef struct s_count
@@ -111,9 +109,10 @@ int					print_hexa(unsigned long long n, const char c);
 int					ft_putchar_fd(char c, int fd);
 int					ft_putnbr_fd(int n, int fd);
 int					ft_putstr_fd(const char *s, int fd);
-int					getMin(t_list **list);
+int					get_min(t_list **list);
 int					min_index(t_list **list);
 int					max_bits(t_list **list);
+int					print_float(float number, int fd);
 
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);

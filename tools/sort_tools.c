@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int	getMin(t_list **list)
+int	get_min(t_list **list)
 {
 	int		min;
 	t_list	*tmp;
@@ -24,7 +24,7 @@ int	min_index(t_list **list)
 
 	index = 0;
 	tmp = (*list);
-	min = getMin(list);
+	min = get_min(list);
 	while (tmp)
 	{
 		if (tmp->data == min)

@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/12 21:16:07 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/12 21:37:11 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,13 @@ t_flag	arg_error(char *argv[])
 }
 
 void	parsing_str(int argc, char *argv[], t_list **a, int num)
-// il faut free split et trouver le moyen de pas avoir de zero et de segfault
 {
-	int arg_index;
-	size_t index;
-	char **str;
-	t_list *new;
+	int		arg_index;
+	size_t	index;
+	char	**str;
+	t_list	*new;
 
 	arg_index = 1;
-
 	if (arg_error(argv))
 		arg_index = flag_count(argv, arg_index);
 	while (arg_index < argc)

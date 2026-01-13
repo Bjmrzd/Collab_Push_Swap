@@ -38,7 +38,7 @@ void	bench(char *argv[], t_count *count, t_dis *init_dis)
 
 	if (flag == BENCH)
 	{
-		printf("[bench] disorder: %f%%\n", init_dis->dis * 100);
+		ft_printf("[bench] disorder: %f%%\n", init_dis->dis * 100);
 		// marche avec printf mais doit modifier ft_printf pour faire float
 		strategy(argv);
 		ft_printf("[bench] total_ops: %d\n", count_ops(count));

@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:03:01 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/12 13:18:21 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:55:43 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	node->data = content;
 	node->next = NULL;
-	node->prev = NULL;
 	return (node);
 }
 

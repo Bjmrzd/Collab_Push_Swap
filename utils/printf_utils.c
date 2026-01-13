@@ -35,8 +35,8 @@ int	ft_putnbr_fd(int n, int fd)
 
 int	ft_putstr_fd(const char *s, int fd)
 {
-	int index;
-	char *str;
+	int		index;
+	char	*str;
 
 	index = 0;
 	str = (char *)s;
@@ -48,4 +48,18 @@ int	ft_putstr_fd(const char *s, int fd)
 		index++;
 	}
 	return (index);
+}
+
+int	print_float(float number, int fd)
+{
+	int count;
+
+	count = 0;
+
+	count += ft_putnbr_fd(number, fd);
+	number = number - (int)number;
+	count += write(1, ".", 1);
+	number = number * 100;
+	count += ft_putnbr_fd(number, fd);
+	return (count);
 }

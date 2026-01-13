@@ -38,14 +38,35 @@ int	max_bits(t_list **list)
 // 	return ((digit / power) % 2);
 // }
 
+// void presort_index(t_list **a_list)
+// {
+// 	t_list	*tmp;
+// 	int		size;
+
+// 	tmp = (*a_list);
+// 	size = ft_lstsize((*a_list));
+// 	while (size < 0)
+// 	{
+// 		while (tmp)
+// 		{
+// 			if (tmp->data > tmp->next->data)
+// 				(*a_list)->index++;
+// 			else
+// 				(*a_list)->next->index++;
+// 			tmp = tmp->next;
+// 		}
+// 		size--;
+// 	}
+// 	printf("index = %d\n", (*a_list)->index);
+// }
 int	check_negative(t_list **a_list, int count_bits)
 {
 	int	val;
 	int	min_val;
 	int	res;
 	int	move;
-
-	min_val = getMin(a_list);
+	// presort_index(a_list);
+	min_val = get_min(a_list);
 	val = (*a_list)->data;
 	if (val < 0)
 		res = val - min_val;

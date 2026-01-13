@@ -70,8 +70,8 @@ static int	typecheck(const char *str, va_list arguments)
 		return (count += print_hexa(va_arg(arguments, unsigned int), 'x'));
 	else if (*str == 'X')
 		return (count += print_hexa(va_arg(arguments, unsigned int), 'X'));
-	// else if (*str == 'f')
-	// 	return (count +=) // doit faire fonction pour float dans bench
+	else if (*str == 'f')
+		return (count += print_float(va_arg(arguments, double), 1));
 	return (count);
 }
 
