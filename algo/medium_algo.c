@@ -37,17 +37,7 @@
 
 void	bucket_sort(t_list **a_list)
 {
-	int		**tab;
-	int		size;
-	int		index;
-	t_list	*tmp;
-	int		val;
+	t_list	**b_list;
 
-	tmp = (*a_list);
-	size = ft_lstsize((*a_list));
-	tab = malloc(10 * sizeof(int *));
-	while (index < size)
-	{
-		tab = malloc(size / index * sizeof(int));
-	}
+	b_list = malloc(sizeof(t_list *));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/13 18:09:56 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:00:46 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void				strat_select(char *argv[], t_list **list, t_count *count);
 void				init_disorder(t_list **list, t_dis *init);
 void				complex_sort(char *argv[], t_list **a_list, t_count *count);
 void				free_list(t_list **list);
+void				presort_index(t_list **a_list);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);
