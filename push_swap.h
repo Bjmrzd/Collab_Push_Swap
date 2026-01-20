@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/17 17:05:49 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/20 17:56:27 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void				presort_index(t_list **a_list);
 void				bucket_sort(char *argv[], t_list **a_list, t_count *count);
 void				medium_push_back(char *argv[], t_list **a_list,
 						t_list **b_list, t_count *count);
+void				radix_logic(int count_bits, t_list **a_list, char *argv[],
+						t_count *count);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);
@@ -119,7 +121,6 @@ int					max_bits(t_list **list);
 int					print_float(float number, int fd);
 int					square_root(int size);
 int					max_index(t_list **list);
-int					get_max(t_list **list);
 
 char				**ft_split(char const *s, char c);
 char				*ft_strchr(const char *s, int c);

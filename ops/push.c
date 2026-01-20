@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:44:41 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 14:49:16 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:25:35 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	pb(char *argv[], t_list **a, t_list **b, t_count *count)
 	tmp->next = *b;
 	(*b) = tmp;
 	count->pb_count++;
-	if (arg_error(argv) == BENCH)
+	if (arg_error(argv) == NO_FLAG)
 		return ;
 	else
 		write(1, "pb\n", 3);
@@ -40,7 +40,7 @@ void	pa(char *argv[], t_list **a, t_list **b, t_count *count)
 	tmp->next = *a;
 	(*a) = tmp;
 	count->pa_count++;
-	if (arg_error(argv) == BENCH)
+	if (arg_error(argv) == NO_FLAG)
 		return ;
 	else
 		write(1, "pa\n", 3);

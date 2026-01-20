@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:45:12 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 17:20:05 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/20 18:04:05 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ int	print_float(float number, int fd)
 	count += ft_putnbr_fd(number, fd);
 	number = number - (int)number;
 	count += write(2, ".", 1);
-	// number = number * 100;
-	// count += ft_putnbr_fd(number, fd);
 	number = number * 10;
 	count += ft_putnbr_fd(number, fd);
 	number = number - (int)number;

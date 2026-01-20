@@ -3,35 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
+/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:44:54 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/17 00:14:51 by bjmrzd           ###   ########.fr       */
+/*   Updated: 2026/01/20 17:50:55 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 float	disorder(t_list **list)
-// voir si disorder est pb ou si autre choses (print_float)
 {
 	int		mistakes;
 	int		total_args;
 	float	dis;
 	t_list	*tmp;
+	t_list	*temp;
 
-	tmp = (*list);
+	temp = (*list);
 	mistakes = 0;
-	total_args = ft_lstsize(tmp);
-	if (sorted(list) == 0)
-		mistakes = 0;
-	while (tmp && tmp->next)
+	total_args = 0;
+	while (temp->next)
 	{
-		if (tmp->data > tmp->next->data)
+		tmp = temp->next;
+		while (tmp)
 		{
-			mistakes += 1;
+			if (temp->data > tmp->data)
+				mistakes += 1;
+			total_args++;
+			tmp = tmp->next;
 		}
-		tmp = tmp->next;
+		temp = temp->next;
 	}
 	dis = (float)mistakes / (float)total_args;
 	return (dis);
