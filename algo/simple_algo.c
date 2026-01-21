@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/20 18:47:21 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:27:37 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,44 @@ void	sort3(char *argv[], t_list **a_list, t_count *count)
 		rra(argv, a_list, count);
 }
 
-t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
-// doit factoriser et faire moins operations
+void	sort_loop(char *argv[], t_list **a_list, t_count *count, int len)
 {
-	int index;
+	int	index;
+	int	val;
+
+	index = min_index(a_list);
+	if (index == 0 || sorted(a_list) == 0)
+		return ;
+	if (index <= len / 2)
+	{
+		while (index-- > 0)
+			ra(argv, a_list, count);
+	}
+	else
+	{
+		val = len - index;
+		while (val-- > 0)
+			rra(argv, a_list, count);
+	}
+}
+
+t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
+// faire moins operations
+{
 	int len;
-	int val;
+
 	t_list **b_list;
 
 	b_list = malloc(sizeof(t_list *));
 	*b_list = NULL;
 	len = ft_lstsize((*a_list));
-	while (len > 0)
+	while (len > 3)
 	{
-		index = min_index(a_list);
-		if (index <= len / 2)
-		{
-			while (index-- > 0)
-				ra(argv, a_list, count);
-		}
-		else
-		{
-			val = len - index;
-			while (val-- > 0)
-				rra(argv, a_list, count);
-		}
+		sort_loop(argv, a_list, count, len);
 		pb(argv, a_list, b_list, count);
 		len--;
 	}
+	simple_sort(argv, a_list, count);
 	return (b_list);
 }
 

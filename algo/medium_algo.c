@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjmrzd <bjmrzd@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:44:33 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/20 18:38:53 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/21 22:12:14 by bjmrzd           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,33 @@ int	square_root(int size)
 	int	val;
 
 	val = 0;
-	while (val * val < size)
+	while (val * val <= size)
 		val++;
 	return (val);
 }
 
 int	max_index(t_list **list)
 {
-	int		max_index;
+	int		max;
+	int		count;
+	int		pos;
 	t_list	*tmp;
 
-	tmp = (*list);
-	presort_index(list);
-	max_index = tmp->index;
+	tmp = (*list)->next;
+	max = (*list)->data;
+	pos = 0;
+	count = 1;
 	while (tmp)
 	{
-		if (tmp->index > max_index)
-			max_index = tmp->index;
+		if (tmp->data > max)
+		{
+			max = tmp->data;
+			pos = count;
+		}
 		tmp = tmp->next;
+		count++;
 	}
-	return (max_index);
+	return (pos);
 }
 
 void	medium_push_back(char *argv[], t_list **a_list, t_list **b_list,
@@ -45,13 +52,13 @@ void	medium_push_back(char *argv[], t_list **a_list, t_list **b_list,
 	int	index_max;
 	int	size;
 
-	size = ft_lstsize((*b_list));
 	while (*b_list)
 	{
+		size = ft_lstsize((*b_list));
 		index_max = max_index(b_list);
 		if ((*b_list)->index == index_max)
 			pa(argv, a_list, b_list, count);
-		else if ((*b_list)->index != index_max && index_max <= size / 2)
+		else if (index_max <= size / 2)
 			rb(argv, b_list, count);
 		else
 			rrb(argv, b_list, count);
