@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:44:33 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/22 19:59:41 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/22 22:21:03 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,50 +22,49 @@ int	square_root(int size)
 	return (val);
 }
 
-int	max_index(t_list **list)
-{
-	int		max;
-	int		pos;
-	t_list	*tmp;
+// int	max_index(t_list **list)
+// {
+// 	int		max;
+// 	int		pos;
+// 	t_list	*tmp;
 
-	tmp = (*list);
-	max = tmp->data;
-	pos = tmp->index;
-	pos = 0;
-	while (tmp)
-	{
-		if (tmp->data > max)
-		{
-			max = tmp->data;
-			pos = tmp->index;
-		}
-		tmp = tmp->next;
-	}
-	return (pos);
-}
+// 	tmp = (*list);
+// 	max = tmp->data;
+// 	pos = 0;
+// 	while (tmp)
+// 	{
+// 		if (tmp->data > max)
+// 		{
+// 			max = tmp->data;
+// 			pos = tmp->index;
+// 		}
+// 		tmp = tmp->next;
+// 	}
+// 	return (pos);
+// }
 
-void	medium_push_back(char *argv[], t_list **a_list, t_list **b_list,
-		t_count *count)
-{
-	int	index_max;
-	int	size;
+// void	medium_push_back(char *argv[], t_list **a_list, t_list **b_list,
+// 		t_count *count)
+// {
+// 	int	index_max;
+// 	int	size;
 
-	presort_index(b_list);
-	while (*b_list)
-	{
-		size = ft_lstsize((*b_list));
-		index_max = max_index(b_list);
-		if ((*b_list)->index == index_max)
-		{
-			pa(argv, a_list, b_list, count);
-		}
-		else if (index_max <= size / 2)
-			rb(argv, b_list, count);
-		else
-			rrb(argv, b_list, count);
-	}
-	free(b_list);
-}
+// 	presort_index(b_list);
+// 	while (*b_list)
+// 	{
+// 		size = ft_lstsize((*b_list));
+// 		index_max = max_index(b_list);
+// 		if ((*b_list)->index == index_max)
+// 		{
+// 			pa(argv, a_list, b_list, count);
+// 		}
+// 		else if (index_max <= size / 2)
+// 			rb(argv, b_list, count);
+// 		else
+// 			rrb(argv, b_list, count);
+// 	}
+// 	free(b_list);
+// }
 
 // void	bucket_sort(char *argv[], t_list **a_list, t_count *count)
 // // doit reduire ops
@@ -100,15 +99,15 @@ void	medium_push_back(char *argv[], t_list **a_list, t_list **b_list,
 // }
 
 t_list	**sort_loop(char *argv[], t_list **a_list, t_count *count,
-		t_list **b_list, int bucket_size)
+		int bucket_size)
 {
-	int	index;
-	int	len;
-	int	val;
+	int		index;
+	int		len;
+	int		val;
+	t_list	**b_list;
 
-	// t_list	**b_list;
-	// b_list = malloc(sizeof(t_list *));
-	// *b_list = NULL;
+	b_list = malloc(sizeof(t_list *));
+	*b_list = NULL;
 	len = ft_lstsize((*a_list));
 	while (len > bucket_size)
 	{
@@ -124,19 +123,20 @@ t_list	**sort_loop(char *argv[], t_list **a_list, t_count *count,
 			while (val-- > 0)
 				rra(argv, a_list, count);
 		}
-		// pb(argv, a_list, b_list, count);
+		pb(argv, a_list, b_list, count);
 		len--;
 	}
 	return (b_list);
 }
 
 void	select_sort(char *argv[], t_list **a_list, t_count *count,
-		t_list **b_list, int bucket_size)
+		int bucket_size)
 {
-	// t_list	**b_list;
+	t_list	**b_list;
+
 	if (sorted(a_list) == 0)
-		exit(2);
-	sort_loop(argv, a_list, count, b_list, bucket_size);
+		return ;
+	b_list = sort_loop(argv, a_list, count, bucket_size);
 	while (*b_list)
 		pa(argv, a_list, b_list, count);
 	free(b_list);
@@ -144,23 +144,23 @@ void	select_sort(char *argv[], t_list **a_list, t_count *count,
 
 void	bucket_sort(char *argv[], t_list **a_list, t_count *count)
 {
-	t_list **b_list;
+	// t_list **b_list;
 	int size;
 	int bucket_size;
-	int bucket_max;
 	int index;
-	b_list = malloc(sizeof(t_list *));
-	*b_list = NULL;
+	// b_list = malloc(sizeof(t_list *));
+	// *b_list = NULL;
 	size = ft_lstsize(*a_list);
 	bucket_size = square_root(size);
 	index = 0;
 	presort_index(a_list);
-	bucket_max = bucket_size;
-	while (index < bucket_size && bucket_size < size)
+
+	while (index * bucket_size <= size)
 	{
-		select_sort(argv, a_list, count, b_list, bucket_size);
+		select_sort(argv, a_list, count, bucket_size);
 		index++;
-		if (bucket_size == index)
-			bucket_size += bucket_max;
 	}
+	// while (*b_list)
+	// 	pa(argv, a_list, b_list, count);
+	// free(b_list);
 }
