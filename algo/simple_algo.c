@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/20 18:47:21 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/22 17:47:57 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,11 @@ void	sort3(char *argv[], t_list **a_list, t_count *count)
 }
 
 t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
-// doit factoriser et faire moins operations
 {
-	int index;
-	int len;
-	int val;
-	t_list **b_list;
+	int		index;
+	int		len;
+	int		val;
+	t_list	**b_list;
 
 	b_list = malloc(sizeof(t_list *));
 	*b_list = NULL;
