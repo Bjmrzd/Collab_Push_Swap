@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:45:04 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 16:44:18 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 02:59:03 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,15 @@ void	medium_sort(char *argv[], t_list **a_list, t_count *count)
 void	adaptive(char *argv[], t_list **list, t_count *count)
 {
 	float	dis;
+	int		size;
 
+	size = ft_lstsize((*list));
 	dis = disorder(list);
-	if (dis < 0.2)
+	if (dis < 0.2 || size <= 25)
 		simple_sort(argv, list, count);
-	else if (dis >= 0.2 && dis < 0.5)
+	else if (dis >= 0.2 && dis < 0.5 && size <= 100)
 		medium_sort(argv, list, count);
-	else if (dis >= 0.5)
+	else if (dis >= 0.5 || size <= 500)
 		complex_sort(argv, list, count);
 }
 
@@ -69,7 +71,7 @@ void	strat_select(char *argv[], t_list **list, t_count *count)
 		flag = second_flag(argv, list);
 	else
 		flag = arg_error(argv);
-	if (flag == ADAPTIVE || flag == NO_FLAG)
+	if (flag == ADAPTIVE || flag == NO_FLAG || flag == COUNT_ONLY)
 		adaptive(argv, list, count);
 	else if (flag == SIMPLE)
 		simple_sort(argv, list, count);

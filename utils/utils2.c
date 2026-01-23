@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:45:27 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 15:27:20 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 02:51:45 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ t_flag	second_flag(char *argv[], t_list **a_list)
 	if (bench_flag == BENCH)
 	{
 		flag = NO_FLAG;
-		if (ft_strncmp(argv[2], "--adaptive", 10) == 0)
+		if (ft_strncmp(argv[2], "--adaptive", 11) == 0)
 			flag = ADAPTIVE;
-		if (ft_strncmp(argv[2], "--simple", 8) == 0)
+		if (ft_strncmp(argv[2], "--simple", 9) == 0)
 			flag = SIMPLE;
-		if (ft_strncmp(argv[2], "--medium", 8) == 0)
+		if (ft_strncmp(argv[2], "--medium", 9) == 0)
 			flag = MEDIUM;
-		if (ft_strncmp(argv[2], "--complex", 9) == 0)
+		if (ft_strncmp(argv[2], "--complex", 10) == 0)
 			flag = COMPLEX;
-		if (ft_strncmp(argv[2], "--bench", 7) == 0)
+		if (ft_strncmp(argv[2], "--bench", 8) == 0)
 			error_arg(a_list);
+		if (ft_strncmp(argv[2], "--count_only", 13) == 0)
+			flag = COUNT_ONLY;
 	}
 	return (flag);
 }

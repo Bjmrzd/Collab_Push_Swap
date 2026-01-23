@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 16:31:31 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 02:54:02 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ int	flag_count(char *argv[], int arg_index, t_list **a_list)
 	}
 	if (flag == BENCH)
 	{
-		if (ft_strncmp(argv[arg_index], "--adaptive", 10) == 0)
+		if (ft_strncmp(argv[arg_index], "--adaptive", 11) == 0
+			|| ft_strncmp(argv[arg_index], "--count_only", 13) == 0)
 			arg_index++;
-		if (ft_strncmp(argv[arg_index], "--simple", 8) == 0)
+		if (ft_strncmp(argv[arg_index], "--simple", 9) == 0)
 			arg_index++;
-		if (ft_strncmp(argv[arg_index], "--medium", 8) == 0)
+		if (ft_strncmp(argv[arg_index], "--medium", 9) == 0)
 			arg_index++;
-		if (ft_strncmp(argv[arg_index], "--complex", 9) == 0)
+		if (ft_strncmp(argv[arg_index], "--complex", 10) == 0)
 			arg_index++;
-		if (ft_strncmp(argv[arg_index], "--bench", 7) == 0)
+		if (ft_strncmp(argv[arg_index], "--bench", 8) == 0)
 			error_arg(a_list);
 	}
 	else
@@ -45,16 +46,18 @@ t_flag	arg_error(char *argv[])
 	t_flag	isflag;
 
 	isflag = NO_FLAG;
-	if (ft_strncmp(argv[1], "--adaptive", 10) == 0)
+	if (ft_strncmp(argv[1], "--adaptive", 11) == 0)
 		isflag = ADAPTIVE;
-	if (ft_strncmp(argv[1], "--simple", 8) == 0)
+	if (ft_strncmp(argv[1], "--simple", 9) == 0)
 		isflag = SIMPLE;
-	if (ft_strncmp(argv[1], "--medium", 8) == 0)
+	if (ft_strncmp(argv[1], "--medium", 9) == 0)
 		isflag = MEDIUM;
-	if (ft_strncmp(argv[1], "--complex", 9) == 0)
+	if (ft_strncmp(argv[1], "--complex", 10) == 0)
 		isflag = COMPLEX;
-	if (ft_strncmp(argv[1], "--bench", 7) == 0)
+	if (ft_strncmp(argv[1], "--bench", 8) == 0)
 		isflag = BENCH;
+	if (ft_strncmp(argv[1], "--count_only", 13) == 0)
+		isflag = COUNT_ONLY;
 	return (isflag);
 }
 
@@ -114,7 +117,7 @@ void	parsing(int argc, char *argv[], t_list **a)
 
 	num = 0;
 	if (argc <= 2)
-		error_arg(a);
+		exit(2);
 	parsing_str(argc, argv, a, num);
 	if (duplicate_parsing(a) == 0)
 		error_arg(a);

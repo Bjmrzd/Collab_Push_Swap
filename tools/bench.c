@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:44:52 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 18:24:35 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 02:40:23 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	strategy(char *argv[], t_list **a_list)
 		flag = second_flag(argv, a_list);
 	else
 		flag = arg_error(argv);
-	if (flag == ADAPTIVE)
+	if (flag == ADAPTIVE || flag == NO_FLAG)
 		ft_printf("[bench] strategy:  Adaptive / O(n√n)\n");
 	if (flag == SIMPLE)
 		ft_printf("[bench] strategy: Simple / O(n2)\n");

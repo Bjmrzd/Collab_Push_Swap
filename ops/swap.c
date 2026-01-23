@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:40 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/20 14:24:29 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 02:47:37 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	sa(char *argv[], t_list **list, t_count *count)
 	tmp->next = head;
 	(*list) = tmp;
 	count->sa_count++;
-	if (arg_error(argv) == NO_FLAG)
+	if (arg_error(argv) == COUNT_ONLY)
 		return ;
 	else
 		write(1, "sa\n", 3);
@@ -45,7 +45,7 @@ void	sb(char *argv[], t_list **list, t_count *count)
 	tmp->next = head;
 	(*list) = tmp;
 	count->sb_count++;
-	if (arg_error(argv) == NO_FLAG)
+	if (arg_error(argv) == COUNT_ONLY)
 		return ;
 	else
 		write(1, "sb\n", 3);
