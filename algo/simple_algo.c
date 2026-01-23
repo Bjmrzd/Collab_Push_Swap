@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:32 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/22 17:47:57 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/01/23 03:06:12 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,28 @@ void	sort3(char *argv[], t_list **a_list, t_count *count)
 		rra(argv, a_list, count);
 }
 
+void	sort_loop(char *argv[], t_list **a_list, t_count *count, int len)
+{
+	int	index;
+	int	val;
+
+	index = min_index(a_list);
+	if (index <= len / 2)
+	{
+		while (index-- > 0)
+			ra(argv, a_list, count);
+	}
+	else
+	{
+		val = len - index;
+		while (val-- > 0)
+			rra(argv, a_list, count);
+	}
+}
+
 t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
 {
-	int		index;
 	int		len;
-	int		val;
 	t_list	**b_list;
 
 	b_list = malloc(sizeof(t_list *));
@@ -64,18 +81,7 @@ t_list	**sort_logic(char *argv[], t_list **a_list, t_count *count)
 	len = ft_lstsize((*a_list));
 	while (len > 0)
 	{
-		index = min_index(a_list);
-		if (index <= len / 2)
-		{
-			while (index-- > 0)
-				ra(argv, a_list, count);
-		}
-		else
-		{
-			val = len - index;
-			while (val-- > 0)
-				rra(argv, a_list, count);
-		}
+		sort_loop(argv, a_list, count, len);
 		pb(argv, a_list, b_list, count);
 		len--;
 	}
