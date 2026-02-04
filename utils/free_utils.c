@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:45:07 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/26 17:43:05 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:23:48 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,16 @@ void	free_malloc_main(t_list **list, t_count *count, t_dis *init_dis,
 	{
 		free(init_dis);
 		free(count);
+		free_list(list);
 		free(list);
 		exit(2);
 	}
+}
+
+void	free_all(t_list **list, t_count *count, t_dis *init_dis)
+{
+	free(init_dis);
+	free(count);
+	free_list(list);
+	free(list);
 }

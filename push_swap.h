@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:56 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/26 17:40:09 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/02/04 20:16:47 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void				radix_logic(int count_bits, t_list **a_list, char *argv[],
 						t_count *count);
 void				free_malloc_main(t_list **list, t_count *count,
 						t_dis *init_dis, t_free not_free);
+void				free_all(t_list **list, t_count *count, t_dis *init_dis);
 
 int					count_ops(t_count *count);
 int					duplicate_parsing(t_list **list);
