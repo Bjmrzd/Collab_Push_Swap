@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/22 09:02:58 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/02/04 20:32:22 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/02/06 03:36:33 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ t_free	parsing(int argc, char *argv[], t_list **a)
 
 	num = 0;
 	not_free = NO_FREE;
-	if (argc <= 2)
+	if (argc < 2)
 	{
 		not_free = FREE;
 		return (not_free);

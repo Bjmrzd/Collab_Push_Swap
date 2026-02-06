@@ -6,7 +6,7 @@
 /*   By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 14:45:15 by brouzaud          #+#    #+#             */
-/*   Updated: 2026/01/16 14:50:58 by brouzaud         ###   ########.fr       */
+/*   Updated: 2026/02/06 03:35:40 by brouzaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ static int	typecheck(const char *str, va_list arguments)
 
 int	ft_printf(const char *str, ...)
 {
-	int		index;
-	va_list	args;
+	int			index;
+	va_list		args;
 
 	if (!str)
 		return (0);

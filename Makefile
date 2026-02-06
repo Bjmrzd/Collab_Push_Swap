@@ -6,7 +6,7 @@
 #    By: brouzaud <brouzaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/22 09:03:04 by brouzaud          #+#    #+#              #
-#    Updated: 2026/01/12 13:15:25 by brouzaud         ###   ########.fr        #
+#    Updated: 2026/02/06 03:37:44 by brouzaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJS = $(SRCS:.c=.o)
 
 HEADERS = push_swap.h
 
-NAME = Push_swap
+NAME = push_swap
 
 all: $(NAME)
 	@echo Compiled !
